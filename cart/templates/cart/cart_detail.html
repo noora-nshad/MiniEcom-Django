@@ -1,0 +1,16 @@
+<h1>My Cart</h1>
+
+{% for item in items %}
+<h3>{{ item.product.name }}</h3>
+<p>Price : {{ item.product.price }}</p>
+<p>Quantity : {{ item.quantity }}</p>
+<p>Total : {{ item.total_price }}</p>
+<a href="{% url 'increase_quantity' item.id %}">+</a>
+<a href="{% url 'decrease_quantity' item.id %}">-</a>
+<a href="{% url 'remove_item' item.id %}">Remove</a>
+<hr>
+{% empty %}
+<h3>Cart is Empty</h3>
+{% endfor %}
+
+<h2>Grand Total : {{ total }}</h2>
